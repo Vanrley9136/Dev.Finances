@@ -1,9 +1,7 @@
 const MenuButton = {
     toggle() {
-        document
-            .querySelector(".add-category-button")
-            .classList
-            .contains("active") ? MenuButton.close() : MenuButton.open()
+        document.querySelector(".add-category-button")
+            .classList.contains("active") ? MenuButton.close() : MenuButton.open()
     },
     open() {
         const addTransactionButton = document.querySelector(".add-transaction-button")
@@ -18,115 +16,86 @@ const MenuButton = {
         addCategoryButton.classList.remove("active")
     }
 }
+
 const CategoryModal = {
     open() {
-        document
-            .querySelector("#category-modal")
-            .classList
-            .add("active")
+        document.querySelector("#category-modal")
+            .classList.add("active")
 
         DOM.categoryModal()
     },
     close() {
-        document
-            .querySelector("#category-modal")
-            .classList
-            .remove("active")
+        document.querySelector("#category-modal")
+            .classList.remove("active")
     }
 }
+
 const CreateTransactionModal = {
     open() {
-        document
-            .querySelector(".modal-overlay")
-            .classList
-            .add("active")
+        document.querySelector(".modal-overlay")
+            .classList.add("active")
 
         DOM.createTransactionModal()
     },
     close() {
-        document
-            .querySelector(".modal-overlay")
-            .classList
-            .remove("active")
+        document.querySelector(".modal-overlay")
+            .classList.remove("active")
     }
 }
+
 const UpdateTransactionModal = {
     open(index) {
-        document
-            .querySelector("#update-transaction-modal")
-            .classList
-            .add("active")
-        document
-            .querySelector("#update-transaction-form")
+        document.querySelector("#update-transaction-modal")
+            .classList.add("active")
+        document.querySelector("#update-transaction-form")
             .setAttribute("aria-modal-index", index)
 
         DOM.updateTransactionModal(index)
     },
     close() {
-        document
-            .querySelector("#update-transaction-modal")
-            .classList
-            .remove("active")
+        document.querySelector("#update-transaction-modal")
+            .classList.remove("active")
     }
 }
+
 const OpeningBalanceModal = {
     open() {
-        document
-            .querySelector("#opening-balance-modal")
-            .classList
-            .add("active")
+        document.querySelector("#opening-balance-modal")
+            .classList.add("active")
     },
     close() {
-        document
-            .querySelector("#opening-balance-modal")
-            .classList
-            .remove("active")
+        document.querySelector("#opening-balance-modal")
+            .classList.remove("active")
     }
 }
 
 const CardColor = {
     totalMonth: {
         positive() {
-            document
-                .querySelector(".card.total-month")
-                .classList
-                .remove("negative")
-            document
-                .querySelector(".card.total-month")
-                .classList
-                .add("positive")
+            document.querySelector(".card.total-month")
+                .classList.remove("negative")
+            document.querySelector(".card.total-month")
+                .classList.add("positive")
         },
         negative() {
-            document
-                .querySelector(".card.total-month")
-                .classList
-                .remove("positive")
-            document
-                .querySelector(".card.total-month")
-                .classList
-                .add("negative")
+            document.querySelector(".card.total-month")
+                .classList.remove("positive")
+            document.querySelector(".card.total-month")
+                .classList.add("negative")
         }
     },
     totalBalance: {
         positive() {
-            document
-                .querySelector(".card.total-balance")
-                .classList
-                .remove("negative")
-            document
-                .querySelector(".card.total-balance")
-                .classList
-                .add("positive")
+            document.querySelector(".card.total-balance")
+                .classList.remove("negative")
+            document.querySelector(".card.total-balance")
+                .classList.add("positive")
         },
         negative() {
-            document
-                .querySelector(".card.total-balance")
-                .classList
-                .remove("positive")
-            document
-                .querySelector(".card.total-balance")
-                .classList
-                .add("negative")
+            document.querySelector(".card.total-balance")
+                .classList.remove("positive")
+            document.querySelector(".card.total-balance")
+                .classList.add("negative")
         }
     }
 }
@@ -155,78 +124,67 @@ const Calendar = {
         const activeMonth = Calendar.activeMonth()
 
         if (intention === 'previous') {
-            document
-                .querySelector("#switch-previous-month-button")
-                .disabled = true
+            document.querySelector("#switch-previous-month-button").disabled = true
 
             if (activeMonth === 0) return
-        }
-        else if (intention === 'next') {
-            document
-                .querySelector("#switch-next-month-button")
-                .disabled = true
+        } else if (intention === 'next') {
+            document.querySelector("#switch-next-month-button").disabled = true
 
-            if (activeMonth === Calendar.months.length -1) return
+            if (activeMonth === Calendar.months.length - 1) return
         }
 
-        const switchMonth   = document.getElementById('switch-month')
+        const switchMonth = document.getElementById('switch-month')
         const previousMonth = document.getElementById('previous-month')
-        const currentMonth  = document.getElementById('current-month')
-        const nextMonth     = document.getElementById('next-month')
+        const currentMonth = document.getElementById('current-month')
+        const nextMonth = document.getElementById('next-month')
 
-        const currentMonthAlignment   = (switchMonth.offsetWidth / 2) - (currentMonth.offsetWidth / 2)
+        const currentMonthAlignment = (switchMonth.offsetWidth / 2) - (currentMonth.offsetWidth / 2)
         currentMonth.style.transition = 'left 300ms ease-in-out, right 300ms ease-in-out, opacity 150ms linear'
-        currentMonth.style.opacity    = '0'
+        currentMonth.style.opacity = '0'
 
         if (intention === 'previous') {
-            const previousMonthAlignment   = (switchMonth.offsetWidth / 2) - (previousMonth.offsetWidth / 2)
+            const previousMonthAlignment = (switchMonth.offsetWidth / 2) - (previousMonth.offsetWidth / 2)
             previousMonth.style.transition = 'left 300ms ease-in-out, opacity 150ms linear'
-            previousMonth.style.opacity    = '100'
-            previousMonth.style.left       = `${previousMonthAlignment}px`
+            previousMonth.style.opacity = '100'
+            previousMonth.style.left = `${previousMonthAlignment}px`
 
             currentMonth.style.left = `${currentMonthAlignment}px`
-        }
-        else if (intention === 'next') {
-            const alignmentNextMonth   = (switchMonth.offsetWidth / 2) - (nextMonth.offsetWidth / 2)
+        } else if (intention === 'next') {
+            const alignmentNextMonth = (switchMonth.offsetWidth / 2) - (nextMonth.offsetWidth / 2)
             nextMonth.style.transition = 'right 300ms ease-in-out, opacity 150ms linear'
-            nextMonth.style.opacity    = '100'
-            nextMonth.style.right      = `${alignmentNextMonth}px`
+            nextMonth.style.opacity = '100'
+            nextMonth.style.right = `${alignmentNextMonth}px`
 
             currentMonth.style.right = `${currentMonthAlignment}px`
         }
 
         setTimeout(() => {
             currentMonth.style.transition = 'none'
-            currentMonth.style.opacity    = '100'
+            currentMonth.style.opacity = '100'
 
             if (intention === 'previous') {
                 previousMonth.style.transition = 'none'
-                previousMonth.style.opacity    = '0'
-                previousMonth.style.left       = '0'
+                previousMonth.style.opacity = '0'
+                previousMonth.style.left = '0'
 
                 currentMonth.style.left = '-50%'
-                Calendar.setActiveMonth(Calendar.activeMonth()-1)
+                Calendar.setActiveMonth(Calendar.activeMonth() - 1)
                 DOM.updateCalendar()
-            }
-            else if (intention === 'next') {
+            } else if (intention === 'next') {
                 nextMonth.style.transition = 'none'
-                nextMonth.style.opacity    = '0'
-                nextMonth.style.right      = '0'
+                nextMonth.style.opacity = '0'
+                nextMonth.style.right = '0'
 
                 currentMonth.style.right = '-50%'
-                Calendar.setActiveMonth(Calendar.activeMonth()+1)
+                Calendar.setActiveMonth(Calendar.activeMonth() + 1)
                 DOM.updateCalendar()
             }
 
             if (activeMonth !== 1) {
-                document
-                    .querySelector("#switch-previous-month-button")
-                    .disabled = false
+                document.querySelector("#switch-previous-month-button").disabled = false
             }
-            if (activeMonth === Calendar.months.length -1) {
-                document
-                    .querySelector("#switch-next-month-button")
-                    .disabled = false
+            if (activeMonth === Calendar.months.length - 1) {
+                document.querySelector("#switch-next-month-button").disabled = false
             }
 
             App.reload()
@@ -253,7 +211,7 @@ const Storage = {
 
         return transactions
     },
-    getTransactions(monthIndex)  {
+    getTransactions(monthIndex) {
         return Storage.get()[monthIndex].transactions
     },
     getOpeningBalance() {
@@ -328,7 +286,7 @@ const Transaction = {
 
         App.reload(true)
     },
-    incomes() { // Somar entradas
+    incomes() {
         const monthIndex = Calendar.activeMonth()
         let income = 0
 
@@ -341,7 +299,7 @@ const Transaction = {
         })
         return income
     },
-    expenses() { // Somar saídas
+    expenses() {
         const monthIndex = Calendar.activeMonth()
         let expense = 0
 
@@ -354,7 +312,7 @@ const Transaction = {
         })
         return expense
     },
-    totalMonth(allValues=false) {
+    totalMonth(allValues = false) {
         const monthIndex = Calendar.activeMonth()
         const openingBalance = Number(Storage.getOpeningBalance())
 
@@ -370,7 +328,7 @@ const Transaction = {
         Transaction.set(transactionsList)
 
         if (!allValues) return totalMonth
-        return {incomes, expenses, totalMonth, openingBalance}
+        return { incomes, expenses, totalMonth, openingBalance }
     },
     totalBalance() {
         const monthIndex = Calendar.activeMonth()
@@ -453,7 +411,7 @@ const DOM = {
     },
     updateTransactionModal(modalIndex) {
         const monthIndex = Calendar.activeMonth()
-        const {category, description, amount, date, deposit} = Storage.getTransactions(monthIndex)[modalIndex]
+        const { category, description, amount, date, deposit } = Storage.getTransactions(monthIndex)[modalIndex]
 
         const select = document.querySelector("#update-category")
         const categories = Storage.getCategories()
@@ -469,80 +427,45 @@ const DOM = {
             select.appendChild(option)
         }
 
-        document
-            .querySelector("#update-category")
-            .value = category
-        document
-            .querySelector("#update-description")
-            .value = description
-        document
-            .querySelector("#update-amount")
-            .value = Utils.formatSimpleAmountToText(String(amount))
-        document
-            .querySelector("#update-date")
-            .value = Utils.unFormatDate(date)
-        document
-            .querySelector("#update-deposit")
-            .checked = deposit
+        document.querySelector("#update-category").value = category
+        document.querySelector("#update-description").value = description
+        document.querySelector("#update-amount").value = Utils.formatSimpleAmountToText(String(amount))
+        document.querySelector("#update-date").value = Utils.unFormatDate(date)
+        document.querySelector("#update-deposit").checked = deposit
     },
     updateOpeningBalance() {
-        document
-            .querySelector("#openingBalanceDisplay")
-            .innerHTML = Utils.formatCurrency(Storage.getOpeningBalance())
-        document
-            .querySelector("#opening-balance-amount")
-            .value = Utils.formatSimpleAmountToText(Storage.getOpeningBalance())
+        document.querySelector("#openingBalanceDisplay").innerHTML = Utils.formatCurrency(Storage.getOpeningBalance())
+        document.querySelector("#opening-balance-amount").value = Utils.formatSimpleAmountToText(Storage.getOpeningBalance())
     },
     updateBalance() {
-        const {incomes, expenses, totalMonth} = Transaction.totalMonth(true)
+        const { incomes, expenses, totalMonth } = Transaction.totalMonth(true)
         const totalBalance = Transaction.totalBalance()
 
-        document
-            .querySelector("#incomeDisplay")
-            .innerHTML = Utils.formatCurrency(incomes)
-        document
-            .querySelector("#expenseDisplay")
-            .innerHTML = Utils.formatCurrency(expenses)
-        document
-            .querySelector("#totalMonthDisplay")
-            .innerHTML = Utils.formatCurrency(totalMonth)
-        document
-            .querySelector("#totalBalanceDisplay")
-            .innerHTML = Utils.formatCurrency(totalBalance)
+        document.querySelector("#incomeDisplay").innerHTML = Utils.formatCurrency(incomes)
+        document.querySelector("#expenseDisplay").innerHTML = Utils.formatCurrency(expenses)
+        document.querySelector("#totalMonthDisplay").innerHTML = Utils.formatCurrency(totalMonth)
+        document.querySelector("#totalBalanceDisplay").innerHTML = Utils.formatCurrency(totalBalance)
     },
     updateCalendar() {
         const activeMonth = Calendar.activeMonth()
 
         const previousMonth = activeMonth - 1
-        const nextMonth     = activeMonth + 1
+        const nextMonth = activeMonth + 1
 
         let disabledPreviousMonth = false
         if (activeMonth === 0) disabledPreviousMonth = true
 
         let disabledNextMonth = false
-        if (activeMonth === Calendar.months.length -1) disabledNextMonth = true
+        if (activeMonth === Calendar.months.length - 1) disabledNextMonth = true
 
-        document
-            .querySelector("#switch-previous-month-button")
-            .disabled = disabledPreviousMonth
-        document
-            .querySelector("#previous-month")
-            .innerHTML = disabledPreviousMonth ? '' : Calendar.months[previousMonth]
-        document
-            .querySelector("#current-month")
-            .innerHTML = Calendar.months[activeMonth]
-        document
-            .querySelector("#next-month")
-            .innerHTML = disabledNextMonth ? '' : Calendar.months[nextMonth]
-        document
-            .querySelector("#switch-next-month-button")
-            .disabled = disabledNextMonth
-        document
-            .querySelector("#year-calendar")
-            .innerHTML = new Date().getFullYear()
-
+        document.querySelector("#switch-previous-month-button").disabled = disabledPreviousMonth
+        document.querySelector("#previous-month").innerHTML = disabledPreviousMonth ? '' : Calendar.months[previousMonth]
+        document.querySelector("#current-month").innerHTML = Calendar.months[activeMonth]
+        document.querySelector("#next-month").innerHTML = disabledNextMonth ? '' : Calendar.months[nextMonth]
+        document.querySelector("#switch-next-month-button").disabled = disabledNextMonth
+        document.querySelector("#year-calendar").innerHTML = new Date().getFullYear()
     },
-    totalCardColor(){
+    totalCardColor() {
         const totalOfMonth = Transaction.totalMonth()
         if (totalOfMonth < 0) CardColor.totalMonth.negative()
         else CardColor.totalMonth.positive()
@@ -551,7 +474,7 @@ const DOM = {
         if (totalOfBalance < 0) CardColor.totalBalance.negative()
         else CardColor.totalBalance.positive()
     },
-    clearTransactions(){
+    clearTransactions() {
         DOM.transactionsContainer.innerHTML = ""
     }
 }
@@ -581,7 +504,7 @@ const Utils = {
 
         return formattedAmount
     },
-    formatSimple(value){
+    formatSimple(value) {
         const signal = Number(value) < 0 ? "- " : "+ "
 
         value = String(value).replace(/\D/g, "")
@@ -604,33 +527,36 @@ const Utils = {
 }
 
 const Form = {
-    category:    document.querySelector("select#category"),
+    category: document.querySelector("select#category"),
     description: document.querySelector("input#description"),
-    amount:      document.querySelector("input#amount"),
-    date:        document.querySelector("input#date"),
-    deposit:     document.querySelector("input#deposit"),
+    amount: document.querySelector("input#amount"),
+    date: document.querySelector("input#date"),
+    deposit: document.querySelector("input#deposit"),
     getValues() {
-
         return {
-            category:    Form.category.value,
+            category: Form.category.value,
             description: Form.description.value,
-            amount:      Form.amount.value,
-            date:        Form.date.value,
-            deposit:     Form.deposit.checked
+            amount: Form.amount.value,
+            date: Form.date.value,
+            deposit: Form.deposit.checked
         }
     },
     validateFields() {
-        const {category, description, amount, date} = Form.getValues()
+        const { category, description, amount, date } = Form.getValues()
 
         if (category === '-1' || description.trim() === "" || amount.trim() === "" || date.trim() === "") {
             throw new Error("Por favor, preencha todos os campos!")
         }
     },
     formatValues() {
-        let {category, description, amount, date, deposit} = Form.getValues()
+        let { category, description, amount, date, deposit } = Form.getValues()
 
         amount = Utils.formatAmount(amount)
-        date   = Utils.formatDate(date)
+        // Se deposit for false, transforma amount em negativo
+        if (!deposit) {
+            amount = -amount;
+        }
+        date = Utils.formatDate(date)
 
         return {
             category,
@@ -644,7 +570,7 @@ const Form = {
         Transaction.add(transaction, monthIndex)
     },
     getDataByTransaction(date) {
-        const cleanedDate  = String(date).replace(/\D/g, "")
+        const cleanedDate = String(date).replace(/\D/g, "")
         let monthIndex = cleanedDate.substring(2, 4)
 
         if (monthIndex.charAt(0) === '0') {
@@ -655,57 +581,58 @@ const Form = {
         return monthIndex
     },
     clearFields() {
-        Form.category.value    = "-1"
+        Form.category.value = "-1"
         Form.description.value = ""
-        Form.amount.value      = ""
-        Form.date.value        = ""
-        Form.deposit.checked   = true
+        Form.amount.value = ""
+        Form.date.value = ""
+        Form.deposit.checked = true
     },
     submit(event) {
         event.preventDefault()
 
         try {
-            Form.validateFields()                                          // Verifica campos
-            const transaction = Form.formatValues()                        // Formata valores
+            Form.validateFields() // Verifica campos
+            const transaction = Form.formatValues() // Formata valores
             const monthIndex = Form.getDataByTransaction(transaction.date) // Pega mês da transação
-            Form.saveTransaction(transaction, monthIndex)                  // Adiciona valores
-            Form.clearFields()                                             // Limpa campos
+            Form.saveTransaction(transaction, monthIndex) // Adiciona valores
+            Form.clearFields() // Limpa campos
 
-            CreateTransactionModal.close()                                                  // Fecha modal
+            CreateTransactionModal.close() // Fecha modal
+            showSuccessAlert("Transação adicionada com sucesso!"); // Mostra alerta de sucesso
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
-            //alert(error.message)
         }
     }
 }
+
 const UpdateTransactionForm = {
-    category:    document.querySelector("select#update-category"),
+    category: document.querySelector("select#update-category"),
     description: document.querySelector("input#update-description"),
-    amount:      document.querySelector("input#update-amount"),
-    date:        document.querySelector("input#update-date"),
-    deposit:     document.querySelector("input#update-deposit"),
+    amount: document.querySelector("input#update-amount"),
+    date: document.querySelector("input#update-date"),
+    deposit: document.querySelector("input#update-deposit"),
     getValues() {
         return {
-            category:    UpdateTransactionForm.category.value,
+            category: UpdateTransactionForm.category.value,
             description: UpdateTransactionForm.description.value,
-            amount:      UpdateTransactionForm.amount.value,
-            date:        UpdateTransactionForm.date.value,
-            deposit:     UpdateTransactionForm.deposit.checked
+            amount: UpdateTransactionForm.amount.value,
+            date: UpdateTransactionForm.date.value,
+            deposit: UpdateTransactionForm.deposit.checked
         }
     },
     validateFields() {
-        const {category, description, amount, date} = UpdateTransactionForm.getValues()
+        const { category, description, amount, date } = UpdateTransactionForm.getValues()
 
         if (category === '-1' || description.trim() === "" || amount.trim() === "" || date.trim() === "") {
             throw new Error("Por favor, preencha todos os campos!")
         }
     },
     formatValues() {
-        let {category, description, amount, date, deposit} = UpdateTransactionForm.getValues()
+        let { category, description, amount, date, deposit } = UpdateTransactionForm.getValues()
 
         amount = Utils.formatAmount(amount)
-        date   = Utils.formatDate(date)
+        date = Utils.formatDate(date)
 
         return {
             category,
@@ -720,22 +647,23 @@ const UpdateTransactionForm = {
     },
     submit(event) {
         event.preventDefault()
-        const modalIndex = document
-            .querySelector("#update-transaction-form")
+        const modalIndex = document.querySelector("#update-transaction-form")
             .getAttribute("aria-modal-index")
 
         try {
-            UpdateTransactionForm.validateFields()                                      // Verifica campos
-            const transaction = UpdateTransactionForm.formatValues()                    // Formata valores
-            const monthIndex = Calendar.activeMonth()                                   // Pega mês ativo
-            UpdateTransactionForm.saveTransaction(modalIndex, transaction, monthIndex)  // Adiciona valores
-            UpdateTransactionModal.close()                                              // Fecha modal
+            UpdateTransactionForm.validateFields() // Verifica campos
+            const transaction = UpdateTransactionForm.formatValues() // Formata valores
+            const monthIndex = Calendar.activeMonth() // Pega mês ativo
+            UpdateTransactionForm.saveTransaction(modalIndex, transaction, monthIndex) // Adiciona valores
+            UpdateTransactionModal.close() // Fecha modal
+            showSuccessAlert("Transação atualizada com sucesso!"); // Mostra alerta de sucesso
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
         }
     }
 }
+
 const OpeningBalanceForm = {
     amount: document.querySelector("input#opening-balance-amount"),
     getValues() {
@@ -744,14 +672,14 @@ const OpeningBalanceForm = {
         }
     },
     validateFields() {
-        const {amount} = OpeningBalanceForm.getValues()
+        const { amount } = OpeningBalanceForm.getValues()
 
         if (amount.trim() === "") {
             throw new Error("Por favor, preencha o campo!")
         }
     },
     formatValues() {
-        let {amount} = OpeningBalanceForm.getValues()
+        let { amount } = OpeningBalanceForm.getValues()
 
         amount = Utils.formatAmount(amount)
 
@@ -766,17 +694,19 @@ const OpeningBalanceForm = {
         event.preventDefault()
 
         try {
-            OpeningBalanceForm.validateFields()                      // Verifica campos
+            OpeningBalanceForm.validateFields() // Verifica campos
             const openingBalance = OpeningBalanceForm.formatValues() // Formata valores
-            OpeningBalanceForm.saveOpeningBalance(openingBalance)    // Adiciona valores
+            OpeningBalanceForm.saveOpeningBalance(openingBalance) // Adiciona valores
 
-            OpeningBalanceModal.close()                              // Fecha modal
+            OpeningBalanceModal.close() // Fecha modal
+            showSuccessAlert("Saldo inicial atualizado com sucesso!"); // Mostra alerta de sucesso
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
         }
     }
 }
+
 const CreateCategoryForm = {
     category: document.querySelector("input#create-category"),
     getValues() {
@@ -785,7 +715,7 @@ const CreateCategoryForm = {
         }
     },
     validateFields() {
-        let {category} = CreateCategoryForm.getValues()
+        let { category } = CreateCategoryForm.getValues()
 
         if (category.trim() === "") {
             throw new Error("Por favor, preencha o campo!")
@@ -799,7 +729,7 @@ const CreateCategoryForm = {
         }
     },
     formatValues() {
-        let {category} = CreateCategoryForm.getValues()
+        let { category } = CreateCategoryForm.getValues()
 
         category = String(category).toLowerCase()
 
@@ -815,19 +745,20 @@ const CreateCategoryForm = {
         event.preventDefault()
 
         try {
-            CreateCategoryForm.validateFields()                    // Verifica campos
-            const category = CreateCategoryForm.formatValues()     // Formata valores
-            CreateCategoryForm.saveCategory(category)              // Adiciona valores
-            CreateCategoryForm.clearFields()                       // Limpa campos
+            CreateCategoryForm.validateFields() // Verifica campos
+            const category = CreateCategoryForm.formatValues() // Formata valores
+            CreateCategoryForm.saveCategory(category) // Adiciona valores
+            CreateCategoryForm.clearFields() // Limpa campos
 
-            CategoryModal.close()                            // Fecha modal
+            CategoryModal.close() // Fecha modal
+            showSuccessAlert("Categoria adicionada com sucesso!"); // Mostra alerta de sucesso
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
         }
     }
-
 }
+
 const DeleteCategoryForm = {
     category: document.querySelector("input#delete-category"),
     getValues() {
@@ -836,7 +767,7 @@ const DeleteCategoryForm = {
         }
     },
     validateFields() {
-        let {category} = DeleteCategoryForm.getValues()
+        let { category } = DeleteCategoryForm.getValues()
 
         if (category.trim() === "") {
             throw new Error("Por favor, preencha o campo!")
@@ -850,7 +781,7 @@ const DeleteCategoryForm = {
         }
     },
     formatValues() {
-        let {category} = DeleteCategoryForm.getValues()
+        let { category } = DeleteCategoryForm.getValues()
 
         category = String(category).toLowerCase()
 
@@ -866,18 +797,18 @@ const DeleteCategoryForm = {
         event.preventDefault()
 
         try {
-            DeleteCategoryForm.validateFields()                    // Verifica campos
-            const category = DeleteCategoryForm.formatValues()     // Formata valores
-            DeleteCategoryForm.saveCategory(category)              // Adiciona valores
-            DeleteCategoryForm.clearFields()                       // Limpa campos
+            DeleteCategoryForm.validateFields() // Verifica campos
+            const category = DeleteCategoryForm.formatValues() // Formata valores
+            DeleteCategoryForm.saveCategory(category) // Adiciona valores
+            DeleteCategoryForm.clearFields() // Limpa campos
 
-            CategoryModal.close()                                  // Fecha modal
+            CategoryModal.close() // Fecha modal
+            showSuccessAlert("Categoria removida com sucesso!"); // Mostra alerta de sucesso
         } catch (error) {
             console.warn(error.message)
             toastError(error.message)
         }
     }
-
 }
 
 const App = {
@@ -891,12 +822,12 @@ const App = {
         Storage.getTransactions(Calendar.activeMonth())
             .forEach((transactions, index) => DOM.addTransaction(transactions, index))
 
-        DOM.updateCalendar()        // Atualiza o mês ativo
-        DOM.updateOpeningBalance()  // Atualiza o valor do saldo inicial
-        DOM.updateBalance()         // Atualiza o valor dos cards
-        DOM.totalCardColor()        // Atualiza a cor do card 'total'
+        DOM.updateCalendar() // Atualiza o mês ativo
+        DOM.updateOpeningBalance() // Atualiza o valor do saldo inicial
+        DOM.updateBalance() // Atualiza o valor dos cards
+        DOM.totalCardColor() // Atualiza a cor do card 'total'
     },
-    reload(DOMOnly=false) {
+    reload(DOMOnly = false) {
         DOM.clearTransactions()
         if (DOMOnly) return App.initDOM()
         App.initAll()
@@ -904,19 +835,21 @@ const App = {
 }
 App.initAll()
 
-
-
 function toastError(message = "ERRO!") {
-    /*let a = document.querySelector("???").innerHTML = `
-    <div id="toast">
-    <div class="img">Icon</div>
-    <div class="description">${message}</div>
-    </div>`*/
-
     const toastId = document.querySelector("#toast")
     toastId.className = "show"
 
     setTimeout(() => {
         toastId.className = toastId.className.replace("show", "")
     }, 5000)
+}
+
+function showSuccessAlert(message) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Sucesso',
+        text: message,
+        showConfirmButton: false,
+        timer: 1500
+    });
 }
